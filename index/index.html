@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ham.css">
+  <title>main</title>
+
+<style>
+
+  * {box-sizing: border-box}
+  .mySlides1, .mySlides2 {display: none}
+  img {vertical-align: middle;}
+  
+  .slideshow-container {
+    max-width: 100vw;
+    position: relative;
+    margin: auto;
+  }
+  
+
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    color: black;
+    padding: 50px;
+    font-size: 40px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    font-family: pretendard, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+        
+  }
+  
+  
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .prev:hover, .next:hover {
+    color: gray;
+  }
+  </style>
+  </head>
+
+  
+  <nav role="navigation">
+    <div id="menuToggle">
+
+      <input type="checkbox" />
+    
+      <span></span>
+      <span></span>
+      <span></span>
+      
+      <ul id="menu">
+        <a href="#"><li>메인</li></a>
+        <a href="#"><li>황일선</li></a>
+
+        <div class="menu1">
+          <a href="#"><p>디 에센셜 시리즈 </p></a>
+          <a href="#"><p>셰익스 피어 희곡 전집 출간 400주년 기념 에디션</p></a>
+          <a href="#"><p>노르웨이의 숲</p></a>
+          <a href="#"><p>동조자, 헌신자</p></a>
+          <a href="#"><p>산문기행, 내면기행</p></a>
+    
+        </div>
+        <a href="#"><li>최지은</li></a>
+
+        <div class="menu1">
+          <a href="#"><p>참을 수 없는 존재의 가벼움</p></a>
+          <a href="#"><p>한국 문학 소설집 시리즈</p></a>
+          <a href="#"><p>이탈로 칼비노 전집 시리즈</p></a>
+        </div>
+        <a href="#"><li>유진아</li></a>
+
+        <div class="menu1">
+          <a href="#"><p>민음사 탐구 시리즈</p></a>
+          <a href="#"><p>바로 손을 흔드는 대신</p></a>
+          <a href="#"><p>말 놓을 용기</p></a>
+          <a href="#"><p>우리가 날씨다</p></a>
+          <a href="#"><p>클라우드 쿠쿠 랜드</p></a>
+
+        </div>
+      </ul>
+  </nav>
+
+  <header>
+    <div class="head" onclick="window.open('www.naver.com')" style='cursor:pointer;'>
+<img src="img/logo.png" style="width: 71px; height: 33px;">
+    </div>
+    </header>
+
+<div class="main">
+    <img src="img/01.png">
+  
+  </div>
+  <div class="menubar" style="width: 100vw; height: 100px;">
+</div>
+  <div class="slideshow-container">
+    <div class="mySlides1">
+      <img src="img/1.png" style="width:100vw">
+    </div>
+  
+    <div class="mySlides1">
+      <img src="img/2.png" style="width:100vw">
+    </div>
+  
+    <div class="mySlides1">
+      <img src="img/3.png" style="width:100vw">
+    </div>
+  
+    <a class="prev" onclick="plusSlides(-1, 0)"><</a>
+    <a class="next" onclick="plusSlides(1, 0)">></a>
+  </div>
+
+  <div class="no2">
+    <a><img src="img/sub1.png"></a>
+        <a><img src="img/sub2.png"></a>
+        <a><img src="img/sub3.png"></a>
+    </div>
+
+  <div class="slideshow-container">
+    <div class="mySlides2">
+      <div class="slider"><img src="img/4.png" style="width:100vw"></div>
+    </div>
+  
+    <div class="mySlides2">
+      <div class="slider"><img src="img/5.png" style="width:100vw"></div>
+    </div>
+  
+    <div class="mySlides2">
+      <div class="slider"><img src="img/6.png" style="width:100vw"></div>
+    </div>
+  
+    <a class="prev" onclick="plusSlides(-1, 1)"><</a>
+    <a class="next" onclick="plusSlides(1, 1)">></a>
+  </div>
+
+
+
+  <script>
+  let slideIndex = [1,1];
+  let slideId = ["mySlides1", "mySlides2"]
+  showSlides(1, 0);
+  showSlides(1, 1);
+  
+  function plusSlides(n, no) {
+    showSlides(slideIndex[no] += n, no);
+  }
+  
+  function showSlides(n, no) {
+    let i;
+    let x = document.getElementsByClassName(slideId[no]);
+    if (n > x.length) {slideIndex[no] = 1}    
+    if (n < 1) {slideIndex[no] = x.length}
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    x[slideIndex[no]-1].style.display = "block";
+
+  }
+  const sliderWrap = document.querySelector(".slideshow-container");
+  const sliderImg = sliderWrap.querySelector(".slideshow-container");         //보여지는 영역
+    const sliderInner = sliderWrap.querySelector(".myslides1, .myslides2");     //움직이는 영역
+    const slider = sliderWrap.querySelectorAll(".slider");              //개별 이미지
+
+    let currentIndex = 0;                                               //현재 보이는 이미지
+    let sliderCount = slider.length;                                    //이미지 갯수
+    let sliderInterval = 2000;                                          //이미지 변경 간격 시간
+    let sliderWidth = slider[0].offsetWidth;                            //이미지 가로 값
+    let sliderClone = sliderInner.firstElementChild.cloneNode(true);    //첫번째 이미지 복사
+
+    // 복사한 첫 번째 이미지 마지막에 붙여넣기
+    sliderInner.appendChild(sliderClone);
+
+    function sliderEffect(){
+        currentIndex++;
+
+        sliderInner.style.transition = "all 0.6s";
+        sliderInner.style.transform = "translateX(-"+ sliderWidth * currentIndex +"px)";
+
+        //마지막 이미지에 위치 했을 때
+        if(currentIndex == sliderCount){
+            setTimeout(() => {
+                sliderInner.style.transition = "0s";
+                sliderInner.style.transform = "translateX(0px)";
+            }, 700);
+
+            currentIndex = 0;
+        }
+
+    }
+
+    setInterval(sliderEffect, sliderInterval);
+</script>
+
+
+  </script>
+
+<div class="no4">
+  <a><img src="img/sub5.png"></a>
+  <a><img src="img/sub4.png"></a>
+  <a><img src="img/sub6.png"></a>
+</div>
+
+
+
+<footer>
+  <div class="logo">
+    <img src="img/logo.png" style="width: 71px; height: 33px; float: left;">
+    <div class="text">Copyright © Minumsa Publishing Group</div>
+  </div>
+  </footer>
+
+
+  
+  </body>
+  </html> 
